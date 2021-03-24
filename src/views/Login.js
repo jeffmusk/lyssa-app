@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import figure1 from "../assets/figure1.png";
-import lyssa from "../assets/lyssa.png";
 
 import InputForm from "../components/InputForm/InputForm";
 import ButtonPrimary from "../components/Buttons/ButtonPrimary";
+import ButtonSecondary from "../components/Buttons/ButtonSecondary";
+
 const initialState = {
   email: "",
   password: "",
 };
+
+const lyssa = process.env.PUBLIC_URL + "/assets/lyssa.png";
+const Google = process.env.PUBLIC_URL + "/assets/Google.png";
+const figure1 = process.env.PUBLIC_URL + "/assets/figure1.png";
+
 export default function Login() {
   const [formState, setFormState] = useState(initialState);
 
@@ -48,8 +53,11 @@ export default function Login() {
           formState={formState}
         />
       </div>
-      <div className="w-full flex justify-center ">
-        <ButtonPrimary text="Iniciar Sesíon" />
+      <div className="w-full  ">
+        <div className="px-20 mt-5 flex flex-col gap-3">
+          <ButtonPrimary text="Iniciar Sesíon" />
+          <ButtonSecondary text="Seguir con Google" icon={Google} />
+        </div>
       </div>
     </div>
   );

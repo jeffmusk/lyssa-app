@@ -12,7 +12,7 @@ export default function InputForm(props) {
         type="text"
         className={`${
           formState[name] != "" && "filled"
-        }  input border border-gray-400 appearance-none rounded-lg w-full px-3 py-3
+        }  input  border-teal appearance-none rounded-lg w-full px-3 py-3 border-2
         pt-5 pb-2 focus focus:border-green-600 focus:outline-none active:outline-none active:border-green-600 `}
         autoFocus
         name={name}

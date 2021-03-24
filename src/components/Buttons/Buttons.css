@@ -1,0 +1,11 @@
+.btn {
+  @apply px-4 py-2 rounded-full shadow-lg outline-none;
+}
+
+.btn-primary {
+  @apply btn font-medium text-white bg-gradient-to-r from-teal to-blueKing;
+}
+
+.btn-secondary {
+  @apply btn font-medium text-gray-500 bg-gradient-to-r bg-gray-100;
+}
