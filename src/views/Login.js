@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const lyssa = process.env.PUBLIC_URL + "/assets/lyssa.png";
-const Google = process.env.PUBLIC_URL + "/assets/Google.png";
+const google = process.env.PUBLIC_URL + "/assets/google.png";
 const figure1 = process.env.PUBLIC_URL + "/assets/figure1.png";
 
 export default function Login() {
@@ -31,7 +31,7 @@ export default function Login() {
           </h1>
         </div>
         <div className="flex relative justify-center z-10 -mt-44 w-full px-16  ">
-          <img src={lyssa} alt="" />
+          <img src={lyssa} alt="Lyssa" />
         </div>
       </div>
 
@@ -56,9 +56,9 @@ export default function Login() {
       <div className="w-full ">
         <div className="px-20 mt-5 flex flex-col gap-3">
           <ButtonPrimary text="Iniciar Sesíon" />
-          <ButtonSecondary text="Seguir con Google" icon={Google} />
+          <ButtonSecondary text="Seguir con Google" icon={google} />
         </div>
-        <div className="footer flex justify-center mt-10">
+        <div className="flex justify-center mt-14">
           <span className="text-gray-500 mr-1">Aun no tengo cuenta</span>
           <a href="#" className="text-teal font-medium">
             Registrarme
