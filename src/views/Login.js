@@ -53,10 +53,16 @@ export default function Login() {
           formState={formState}
         />
       </div>
-      <div className="w-full  ">
+      <div className="w-full ">
         <div className="px-20 mt-5 flex flex-col gap-3">
           <ButtonPrimary text="Iniciar Sesíon" />
           <ButtonSecondary text="Seguir con Google" icon={Google} />
+        </div>
+        <div className="footer flex justify-center mt-10">
+          <span className="text-gray-500 mr-1">Aun no tengo cuenta</span>
+          <a href="#" className="text-teal font-medium">
+            Registrarme
+          </a>
         </div>
       </div>
     </div>

@@ -15,5 +15,10 @@
   font-size: 0.75rem;
   transition: all 0.2s ease-out;
   top: -0.1rem;
-  @apply text-teal;
+  border: red;
+  @apply text-teal border-teal;
+}
+
+.input:focus {
+  @apply text-teal border-teal;
 }
