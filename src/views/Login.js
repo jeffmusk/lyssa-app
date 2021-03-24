@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import InputForm from "../components/InputForm/InputForm";
 import figure1 from "../assets/figure1.png";
 import lyssa from "../assets/lyssa.png";
 
+import InputForm from "../components/InputForm/InputForm";
+import ButtonPrimary from "../components/Buttons/ButtonPrimary";
 const initialState = {
   email: "",
   password: "",
@@ -33,7 +34,7 @@ export default function Login() {
         Ingresar
       </h1>
 
-      <div className="w-full px-12">
+      <div className=" w-full px-12 ">
         <InputForm
           label={"Email"}
           name={"email"}
@@ -46,6 +47,9 @@ export default function Login() {
           onchange={onchange}
           formState={formState}
         />
+      </div>
+      <div className="w-full flex justify-center ">
+        <ButtonPrimary text="Iniciar Sesíon" />
       </div>
     </div>
   );
