@@ -8,11 +8,12 @@ export default function InputForm(props) {
     <div className="mb-4 relative">
       <input
         type="text"
+        autofocus="false"
         className={`${
           formState[name] != "" && "filled"
         }  input  border-gray-200 appearance-none rounded-lg w-full px-3 py-3 border-2
         pt-5 pb-2 focus focus:border-green-600 focus:outline-none active:outline-none active:border-green-600 `}
-        autoFocus
+        autoFocus={false}
         name={name}
         onChange={onchange}
         value={formState[name]}

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import InputForm from "../components/InputForm/InputForm";
 import ButtonPrimary from "../components/Buttons/ButtonPrimary";
 import ButtonSecondary from "../components/Buttons/ButtonSecondary";
+import { Link } from "react-router-dom";
 
 const initialState = {
   email: "",
@@ -30,12 +31,12 @@ export default function Login() {
             Organiza tu <br /> día con <br /> Lyssa
           </h1>
         </div>
-        <div className="flex relative justify-center z-10 -mt-44 w-full px-16  ">
+        <div className="flex relative justify-center z-10 -mt-48 w-full px-16  ">
           <img src={lyssa} alt="Lyssa" />
         </div>
       </div>
 
-      <h1 className="w-full flex justify-center font-bold text-lg text-gray-500 my-5">
+      <h1 className="w-full flex justify-center font-bold text-lg text-gray-500 mt-8 mb-2">
         Ingresar
       </h1>
 
@@ -52,17 +53,25 @@ export default function Login() {
           onchange={onchange}
           formState={formState}
         />
+        <div className="flex justify-end">
+          <Link
+            className="text-gray-400 font-normal text-sm siz -mt-2 mb-2"
+            to="/resetpassword"
+          >
+            Olvide mi contraseña
+          </Link>
+        </div>
       </div>
       <div className="w-full ">
-        <div className="px-20 mt-5 flex flex-col gap-3">
+        <div className="px-20 mt-7 flex flex-col gap-3">
           <ButtonPrimary text="Iniciar Sesíon" />
           <ButtonSecondary text="Seguir con Google" icon={google} />
         </div>
         <div className="flex justify-center mt-14">
           <span className="text-gray-500 mr-1">Aun no tengo cuenta</span>
-          <a href="#" className="text-teal font-medium">
+          <Link className="text-teal font-medium" to="/singup">
             Registrarme
-          </a>
+          </Link>
         </div>
       </div>
     </div>
