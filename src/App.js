@@ -1,12 +1,12 @@
 import "./App.css";
 import Login from "./views/Login";
-
+import { Link } from "react-router-dom";
 function App() {
   return (
-    <div className="w-full flex bg-gray-200  justify-center">
-      <div className="max-w-md bg-white pb-20">
-        <Login />
-      </div>
+    <div className="w-full flex flex-col bg-gray-200 items-center  justify-center">
+      <Link to="/login">To login</Link>
+      <br />
+      <Link to="/singup">To SignUp</Link>
     </div>
   );
 }

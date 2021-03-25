@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import "./InputForm.css";
 
 export default function InputForm(props) {
-  const [inputValue, setInputValue] = useState("");
-
   const { label, name, onchange, formState } = props;
 
   return (
