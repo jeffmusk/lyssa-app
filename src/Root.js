@@ -7,6 +7,7 @@ import SingUp from "./views/SingUp";
 import Home from "./views/Home";
 import ResetPassword from "./views/ResetPassword";
 import { PrivateRoute } from "./hoc/PrivateRoute";
+import { PublicRoute } from "./hoc/PublicRoute";
 
 export default function Root() {
   return (
@@ -21,9 +22,8 @@ export default function Root() {
           <Route path="/singup">
             <SingUp />
           </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
+          <PublicRoute exact path="/login" component={Login} newRoute="/home" />
+
           <Route exact path="/">
             <Home />
           </Route>

@@ -3,7 +3,7 @@ import { Redirect, Route } from "react-router-dom";
 
 import { useCurrentUser } from "../context/AuthContext";
 
-export const PublicRoute = ({ component: Component, path, ...rest }) => {
+export const PublicRoute = ({ component: Component, newRoute, ...rest }) => {
   const { currentUser, fetchCurrentUser } = useCurrentUser();
 
   return (
@@ -11,14 +11,14 @@ export const PublicRoute = ({ component: Component, path, ...rest }) => {
       {...rest}
       render={(props) =>
         currentUser ? (
-          <Component {...props} user={useCurrentUser} />
-        ) : (
           <Redirect
             to={{
-              pathname: "/login",
+              pathname: newRoute,
               state: { from: props.location },
             }}
           />
+        ) : (
+          <Component {...props} user={useCurrentUser} />
         )
       }
     />
