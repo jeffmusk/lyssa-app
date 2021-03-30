@@ -1,0 +1,10 @@
+{
+   "task": [
+    {"title" : "casa" ,"description": "lavar la loza" , "time": 2 },
+    {"title" : "trabajo" ,"description": "Realizar informa" , "time": 3 },
+    {"title" : "gym" ,"description": "Trotar 12 km" , "time": 1 },
+    {"title" : "casa" ,"description": "sacar al perro" , "time": 5 },
+    {"title" : "trabajo" ,"description": "reuniond e ventas" , "time": 2 }
+   ]
+   
+}

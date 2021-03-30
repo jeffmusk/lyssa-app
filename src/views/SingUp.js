@@ -12,7 +12,7 @@ const initialState = {
   name: "",
   email: "",
   password: "",
-  checkbox: false,
+  checkbox: true,
 };
 
 export default function SingUp() {

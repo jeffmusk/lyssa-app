@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import InputForm from "../components/InputForm/InputForm";
 import ButtonPrimary from "../components/Buttons/ButtonPrimary";
 import ButtonSecondary from "../components/Buttons/ButtonSecondary";
-import { Link } from "react-router-dom";
+import { useCurrentUser } from "../context/AuthContext";
+
+import { singInWithGoogle } from "../firebase/Auth";
 
 const initialState = {
   email: "",
@@ -16,6 +19,9 @@ const figure1 = process.env.PUBLIC_URL + "/assets/figure1.png";
 
 export default function Login() {
   const [formState, setFormState] = useState(initialState);
+  const { currentUser, fetchCurrentUser, loading } = useCurrentUser();
+
+  React.useEffect(() => fetchCurrentUser(), []);
 
   const onchange = (e) => {
     setFormState(() => ({ ...formState, [e.target.name]: e.target.value }));
@@ -65,7 +71,11 @@ export default function Login() {
       <div className="w-full ">
         <div className="px-20 mt-7 flex flex-col gap-3">
           <ButtonPrimary text="Iniciar Sesíon" />
-          <ButtonSecondary text="Seguir con Google" icon={google} />
+          <ButtonSecondary
+            text="Seguir con Google"
+            icon={google}
+            onClick={singInWithGoogle}
+          />
         </div>
         <div className="flex justify-center mt-14">
           <span className="text-gray-500 mr-1">Aun no tengo cuenta</span>
