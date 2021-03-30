@@ -6,7 +6,7 @@ export default function ButtonPrimary(props) {
 
   return (
     <React.Fragment>
-      <button className="btn-primary" onClick={onClick}>
+      <button className="btn-primary " onClick={onClick}>
         {text}
       </button>
     </React.Fragment>

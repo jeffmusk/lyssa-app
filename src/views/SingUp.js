@@ -143,8 +143,8 @@ export default function SingUp() {
   };
 
   return (
-    <div className="container ">
-      <div className="flex  -mt-5 -mr-2 justify-end z-20">
+    <div className="max-w-sm">
+      <div className="flex -mt-5 -mr-4 justify-end z-20">
         <img src={figure2} alt="firgure" className="w-2/3" />
       </div>
       <div className="flex -mt-48  mr-2 z-10 ">
@@ -152,7 +152,7 @@ export default function SingUp() {
       </div>
 
       <div className="formSignUp flex items-center flex-col ">
-        <h1 className="font-semibold mt-2 text-gray-500 text-lg">
+        <h1 className="font-semibold my-4 text-gray-500 text-lg">
           ¡Registrate ahora!
         </h1>
         <div className="px-8">
@@ -162,7 +162,7 @@ export default function SingUp() {
             </p>
           )}
         </div>
-        <div className="flex flex-col gap-1 pt-5 mt-1">
+        <div className="w-full px-10">
           <InputForm
             label="Email"
             name="email"
@@ -184,31 +184,32 @@ export default function SingUp() {
             formState={formState}
             errorMessage={errorMessage.repeatPassword}
           />
-          <div className="flex items-center gap-1 cursor-pointer -mt-4">
+          <div className="flex items-center gap-1 cursor-pointer ">
             <input
               type="checkbox"
               name="checkbox"
               checked={formState.checkbox}
               onChange={onchange}
+              className="form-checkbox h-6 w-6 text-teal"
             />
             <span>Recordarme</span>
           </div>
-          <div className="w-full ">
-            <div className="px-20 mt-6 flex flex-col gap-3">
-              <ButtonPrimary text="Registrarme" onClick={submit} />
-              <ButtonSecondary
-                text="iniciar con Google"
-                icon={google}
-                onClick={singInWithGoogle}
-              />
-            </div>
-            <div className="flex justify-center mt-11">
-              <span className="text-gray-500 mr-1">Aun no tengo cuenta</span>
-              <Link className="text-teal font-medium" to="/login">
-                Iniciar Sessión
-              </Link>
-            </div>
+        </div>
+        <div className="w-full ">
+          <div className="px-20 mt-6 flex flex-col gap-3">
+            <ButtonPrimary text="Registrarme" onClick={submit} />
+            <ButtonSecondary
+              text="iniciar con Google"
+              icon={google}
+              onClick={singInWithGoogle}
+            />
           </div>
+        </div>
+        <div className="flex justify-center mt-11">
+          <span className="text-gray-500 mr-1">Aun no tengo cuenta</span>
+          <Link className="text-teal font-medium" to="/login">
+            Iniciar Sessión
+          </Link>
         </div>
       </div>
     </div>

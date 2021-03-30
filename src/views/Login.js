@@ -116,7 +116,7 @@ export default function Login() {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="max-w-sm">
       <div className="imageHeader relative">
         <div className="figure1 -m-2 relative">
           <img src={figure1} alt="image" />
@@ -140,7 +140,7 @@ export default function Login() {
         )}
       </div>
 
-      <div className=" w-full px-12 ">
+      <div className=" w-full px-10 ">
         <InputForm
           label={"Email"}
           name={"email"}
@@ -157,7 +157,7 @@ export default function Login() {
         />
         <div className="flex justify-end">
           <Link
-            className="text-gray-400 font-normal text-sm siz -mt-2 mb-2"
+            className="text-gray-400 font-normal text-sm siz -mt-2 mb-2 underline"
             to="/resetpassword"
           >
             Olvide mi contraseña

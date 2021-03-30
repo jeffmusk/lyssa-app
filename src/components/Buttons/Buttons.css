@@ -1,9 +1,9 @@
 .btn {
-  @apply px-4 py-2 rounded-full shadow-lg outline-none;
+  @apply px-4 py-3 rounded-full shadow-lg outline-none;
 }
 
 .btn-primary {
-  @apply btn font-medium text-white bg-gradient-to-r from-teal to-blueKing;
+  @apply btn font-medium text-white bg-gradient-to-r from-teal to-blueKing py-10;
 }
 
 .btn-secondary {
