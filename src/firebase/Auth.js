@@ -19,9 +19,11 @@ export const singInWithEmail = async (email, password) => {
     const user = await auth.signInWithEmailAndPassword(email, password);
     console.log(user);
     console.log("Inicio sesión");
+    return user;
   } catch (e) {
     console.log("ocurrio un error");
     console.log(e.message);
+    return e;
   }
 };
 

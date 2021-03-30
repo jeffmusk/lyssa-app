@@ -67,7 +67,7 @@ export default function SingUp() {
           } else {
             setErrorMessage(() => ({
               ...errorMessage,
-              [name]: "debe tener entre 6 y 10 caracteres xx",
+              [name]: "debe tener entre 6 y 10 caracteres",
             }));
           }
         }
@@ -138,6 +138,7 @@ export default function SingUp() {
         }));
       }
       result.code && console.log(result.message);
+      //TODO validar que pasa si firebase devuelve un error que no este en los codigos
     }
   };
 
@@ -154,7 +155,7 @@ export default function SingUp() {
         <h1 className="font-semibold mt-2 text-gray-500 text-lg">
           ¡Registrate ahora!
         </h1>
-        <div className="px-10">
+        <div className="px-8">
           {errorMessage.errorSignUp && (
             <p className="flex bg-red-500 rounded text-white font-semibold px-2 py-1 justify-center mt-2 ">
               {errorMessage.errorSignUp}
