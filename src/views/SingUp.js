@@ -12,6 +12,7 @@ import {
   comparePasswords,
 } from "../utils/validations";
 import { singUpWithEmail, singInWithGoogle } from "../firebase/Auth";
+import { errorCodes } from "../firebase/ErrorCode";
 
 const figure2 = process.env.PUBLIC_URL + "/assets/figure2.png";
 const person = process.env.PUBLIC_URL + "/assets/person1.png";
@@ -111,7 +112,11 @@ export default function SingUp() {
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
     validateErrors(name, value);
-
+    errorMessage.errorSignUp &&
+      setErrorMessage(() => ({
+        ...errorMessage,
+        errorSignUp: null,
+      }));
     setFormState(() => ({ ...formState, [name]: value }));
   };
 
@@ -126,6 +131,13 @@ export default function SingUp() {
     ) {
       const result = await singUpWithEmail(formState.email, formState.password);
       console.log(result);
+      if (result.code) {
+        setErrorMessage(() => ({
+          ...errorMessage,
+          errorSignUp: errorCodes[result.code],
+        }));
+      }
+      result.code && console.log(result.message);
     }
   };
 
@@ -142,6 +154,13 @@ export default function SingUp() {
         <h1 className="font-semibold mt-2 text-gray-500 text-lg">
           ¡Registrate ahora!
         </h1>
+        <div className="px-10">
+          {errorMessage.errorSignUp && (
+            <p className="flex bg-red-500 rounded text-white font-semibold px-2 py-1 justify-center mt-2 ">
+              {errorMessage.errorSignUp}
+            </p>
+          )}
+        </div>
         <div className="flex flex-col gap-1 pt-5 mt-1">
           <InputForm
             label="Email"
@@ -173,11 +192,6 @@ export default function SingUp() {
             />
             <span>Recordarme</span>
           </div>
-          {/* {errorMessage.errorSignUp && (
-            <p className="flex bg-red-500 rounded text-white font-semibold px-2 py-1 justify-center mt-2 ">
-              {errorMessage.errorSignUp}
-            </p>
-          )} */}
           <div className="w-full ">
             <div className="px-20 mt-6 flex flex-col gap-3">
               <ButtonPrimary text="Registrarme" onClick={submit} />

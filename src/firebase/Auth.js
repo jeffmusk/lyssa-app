@@ -46,6 +46,7 @@ export const singUpWithEmail = async (email, password) => {
   } catch (e) {
     console.log("ocurrio un error");
     console.log(e.message);
+    return e;
   }
 };
 
