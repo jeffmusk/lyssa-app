@@ -68,8 +68,10 @@ export const singInWithGoogle = async () => {
 export const resetPassword = async (email) => {
   try {
     await auth.sendPasswordResetEmail(email);
+    return "Email enviado";
   } catch (e) {
     console.log("ocurrio un error");
     console.log(e.message);
+    return e;
   }
 };
