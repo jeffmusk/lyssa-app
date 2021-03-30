@@ -16,13 +16,14 @@ export default function Root() {
         {/* A <Switch> looks through its children <Route>s and
         renders the first one that matches the current URL. */}
         <Switch>
-          <Route exact path="/">
-            <App />
-          </Route>
-          <Route path="/singup">
-            <SingUp />
-          </Route>
+          <PublicRoute exact path="/" component={Login} newRoute="/home" />
           <PublicRoute exact path="/login" component={Login} newRoute="/home" />
+          <PublicRoute
+            exact
+            path="/singup"
+            component={SingUp}
+            newRoute="/home"
+          />
 
           <Route exact path="/">
             <Home />

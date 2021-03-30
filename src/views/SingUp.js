@@ -4,6 +4,8 @@ import ButtonPrimary from "../components/Buttons/ButtonPrimary";
 import ButtonSecondary from "../components/Buttons/ButtonSecondary";
 import { Link } from "react-router-dom";
 
+import { singInWithGoogle } from "../firebase/Auth";
+
 const figure2 = process.env.PUBLIC_URL + "/assets/figure2.png";
 const person = process.env.PUBLIC_URL + "/assets/person1.png";
 const google = process.env.PUBLIC_URL + "/assets/google.png";
@@ -70,7 +72,11 @@ export default function SingUp() {
           <div className="w-full ">
             <div className="px-20 mt-6 flex flex-col gap-3">
               <ButtonPrimary text="Registrarme" />
-              <ButtonSecondary text="iniciar con Google" icon={google} />
+              <ButtonSecondary
+                text="iniciar con Google"
+                icon={google}
+                onClick={singInWithGoogle}
+              />
             </div>
             <div className="flex justify-center mt-11">
               <span className="text-gray-500 mr-1">Aun no tengo cuenta</span>
