@@ -4,7 +4,7 @@ import { Redirect, Route } from "react-router-dom";
 import { useCurrentUser } from "../context/AuthContext";
 
 export const PublicRoute = ({ component: Component, newRoute, ...rest }) => {
-  const { currentUser, fetchCurrentUser } = useCurrentUser();
+  const { currentUser } = useCurrentUser();
 
   return (
     <Route

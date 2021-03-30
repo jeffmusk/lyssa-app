@@ -1,33 +1,134 @@
 import React, { useState } from "react";
-import InputForm from "../components/InputForm/InputForm";
-import ButtonPrimary from "../components/Buttons/ButtonPrimary";
-import ButtonSecondary from "../components/Buttons/ButtonSecondary";
 import { Link } from "react-router-dom";
 
-import { singInWithGoogle } from "../firebase/Auth";
+import InputForm from "../components/InputForm/InputForm";
+import InputPassword from "../components/InputForm/InputPassword";
+import ButtonPrimary from "../components/Buttons/ButtonPrimary";
+import ButtonSecondary from "../components/Buttons/ButtonSecondary";
+import {
+  validateEmail,
+  validatePassword,
+  isEmpty,
+  comparePasswords,
+} from "../utils/validations";
+import { singUpWithEmail, singInWithGoogle } from "../firebase/Auth";
 
 const figure2 = process.env.PUBLIC_URL + "/assets/figure2.png";
 const person = process.env.PUBLIC_URL + "/assets/person1.png";
 const google = process.env.PUBLIC_URL + "/assets/google.png";
 
 const initialState = {
-  name: "",
   email: "",
   password: "",
+  repeatPassword: "",
   checkbox: true,
+};
+
+const initialErrors = {
+  email: null,
+  password: null,
+  repeatPassword: null,
+  errorSignUp: null,
 };
 
 export default function SingUp() {
   const [formState, setFormState] = useState(initialState);
+  const [errorMessage, setErrorMessage] = useState(initialErrors);
 
-  const onchange = (e) => {
+  function validateErrors(name, value) {
+    switch (name) {
+      case "email":
+        if (validateEmail(value)) {
+          setErrorMessage(() => ({ ...errorMessage, [name]: null }));
+        } else {
+          if (isEmpty(value)) {
+            setErrorMessage(() => ({
+              ...errorMessage,
+              [name]: "El campo email es obligatorio",
+            }));
+          } else {
+            setErrorMessage(() => ({
+              ...errorMessage,
+              [name]: "No es un email valido",
+            }));
+          }
+        }
+        break;
+      case "password":
+        if (validatePassword(value)) {
+          setErrorMessage(() => ({ ...errorMessage, [name]: null }));
+        } else {
+          if (isEmpty(value)) {
+            setErrorMessage(() => ({
+              ...errorMessage,
+              [name]: "El campo contraseña es obligatorio",
+            }));
+          } else {
+            setErrorMessage(() => ({
+              ...errorMessage,
+              [name]: "debe tener entre 6 y 10 caracteres xx",
+            }));
+          }
+        }
+        break;
+      case "repeatPassword":
+        if (comparePasswords(value, formState.password)) {
+          setErrorMessage(() => ({ ...errorMessage, [name]: null }));
+        } else {
+          setErrorMessage(() => ({
+            ...errorMessage,
+            [name]: "Las contraseñas no coinciden",
+          }));
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  function validateSubmit() {
+    !validateEmail(formState.email) &&
+      setErrorMessage(() => ({
+        ...errorMessage,
+        email: "Correo invalido",
+      }));
+
+    !validatePassword(formState.password) &&
+      setErrorMessage(() => ({
+        ...errorMessage,
+        password: "Contraseña invalida",
+      }));
+
+    !comparePasswords(formState.password, formState.repeatPassword) &&
+      setErrorMessage(() => ({
+        ...errorMessage,
+        repeatPassword: "Las contraseñas  no coinciden",
+      }));
+  }
+
+  const onchange = async (e) => {
     const target = e.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
+    validateErrors(name, value);
 
-    setFormState(() => ({ ...formState, [e.target.name]: value }));
-    console.log(target, value, name);
+    setFormState(() => ({ ...formState, [name]: value }));
   };
+
+  const submit = async (e) => {
+    e.persist();
+    await validateSubmit();
+
+    if (
+      errorMessage.email === null &&
+      errorMessage.password === null &&
+      errorMessage.repeatPassword === null
+    ) {
+      const result = await singUpWithEmail(formState.email, formState.password);
+      console.log(result);
+    }
+  };
+
   return (
     <div className="container ">
       <div className="flex  -mt-5 -mr-2 justify-end z-20">
@@ -43,22 +144,25 @@ export default function SingUp() {
         </h1>
         <div className="flex flex-col gap-1 pt-5 mt-1">
           <InputForm
-            label="Nombre"
-            name="name"
-            onchange={onchange}
-            formState={formState}
-          />
-          <InputForm
             label="Email"
             name="email"
             onchange={onchange}
             formState={formState}
+            errorMessage={errorMessage.email}
           />
-          <InputForm
+          <InputPassword
             label="Contraseña"
             name="password"
             onchange={onchange}
             formState={formState}
+            errorMessage={errorMessage.password}
+          />
+          <InputPassword
+            label="Repita la Contraseña"
+            name="repeatPassword"
+            onchange={onchange}
+            formState={formState}
+            errorMessage={errorMessage.repeatPassword}
           />
           <div className="flex items-center gap-1 cursor-pointer -mt-4">
             <input
@@ -69,9 +173,14 @@ export default function SingUp() {
             />
             <span>Recordarme</span>
           </div>
+          {/* {errorMessage.errorSignUp && (
+            <p className="flex bg-red-500 rounded text-white font-semibold px-2 py-1 justify-center mt-2 ">
+              {errorMessage.errorSignUp}
+            </p>
+          )} */}
           <div className="w-full ">
             <div className="px-20 mt-6 flex flex-col gap-3">
-              <ButtonPrimary text="Registrarme" />
+              <ButtonPrimary text="Registrarme" onClick={submit} />
               <ButtonSecondary
                 text="iniciar con Google"
                 icon={google}

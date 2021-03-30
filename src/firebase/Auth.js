@@ -27,9 +27,22 @@ export const singInWithEmail = async (email, password) => {
 
 export const singUpWithEmail = async (email, password) => {
   try {
-    const user = await auth.createUserWithEmailAndPassword(email, password);
-    console.log(user);
-    console.log("Se creo la cuenta correctamente");
+    const res = await auth.createUserWithEmailAndPassword(email, password);
+    console.log(res);
+    const user = auth.currentUser;
+
+    user
+      .sendEmailVerification()
+      .then(function () {
+        console.log("Email enviado");
+      })
+      .catch(function (e) {
+        console.log("ocurrio un error", e);
+      });
+    console.log(
+      "Se creo la cuenta correctamente y se envio el email para validar el email"
+    );
+    return user;
   } catch (e) {
     console.log("ocurrio un error");
     console.log(e.message);
@@ -40,7 +53,7 @@ export const singInWithGoogle = async () => {
   try {
     var provider = new firebase.auth.GoogleAuthProvider();
     const user = await auth.signInWithRedirect(provider);
-    await user.sendEmailVerification();
+
     console.log(user);
     console.log("Se creo la cuenta correctamente");
   } catch (e) {

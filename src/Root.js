@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import App from "./App";
 import Login from "./views/Login";
 import SingUp from "./views/SingUp";
 import Home from "./views/Home";

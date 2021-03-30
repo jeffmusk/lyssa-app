@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Redirect, Route } from "react-router-dom";
 
 import { useCurrentUser } from "../context/AuthContext";
@@ -11,7 +11,11 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
       {...rest}
       render={(props) =>
         currentUser ? (
-          <Component {...props} user={useCurrentUser} />
+          <Component
+            {...props}
+            user={useCurrentUser}
+            fecth={fetchCurrentUser}
+          />
         ) : (
           <Redirect
             to={{

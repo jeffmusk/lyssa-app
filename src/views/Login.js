@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import InputForm from "../components/InputForm/InputForm";
 import ButtonPrimary from "../components/Buttons/ButtonPrimary";
 import ButtonSecondary from "../components/Buttons/ButtonSecondary";
-import { useCurrentUser } from "../context/AuthContext";
 
 import { singInWithGoogle } from "../firebase/Auth";
 
@@ -19,9 +18,6 @@ const figure1 = process.env.PUBLIC_URL + "/assets/figure1.png";
 
 export default function Login() {
   const [formState, setFormState] = useState(initialState);
-  const { currentUser, fetchCurrentUser, loading } = useCurrentUser();
-
-  React.useEffect(() => fetchCurrentUser(), []);
 
   const onchange = (e) => {
     setFormState(() => ({ ...formState, [e.target.name]: e.target.value }));

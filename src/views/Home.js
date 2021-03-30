@@ -19,7 +19,7 @@ export default function Home() {
       }
     });
 
-    if (inputText.length == 0) {
+    if (inputText.length === 0) {
       setTask(data.task);
     } else {
       setTask(busqueda);
