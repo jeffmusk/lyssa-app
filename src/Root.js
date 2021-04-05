@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./views/Login";
 import SingUp from "./views/SingUp";
 import Home from "./views/Home";
+import Profile from "./views/Profile";
 import ResetPassword from "./views/ResetPassword";
 import { PrivateRoute } from "./hoc/PrivateRoute";
 import { PublicRoute } from "./hoc/PublicRoute";
@@ -24,14 +25,12 @@ export default function Root() {
             newRoute="/home"
           />
 
-          <Route exact path="/">
-            <Home />
-          </Route>
           <Route path="/resetpassword">
             <ResetPassword />
           </Route>
 
           <PrivateRoute exact path="/home" component={Home} />
+          <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
       </div>
     </Router>
