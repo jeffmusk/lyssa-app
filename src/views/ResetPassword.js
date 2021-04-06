@@ -75,7 +75,7 @@ export default function ResetPassword() {
     <div className="flex flex-col h-screen items-center bg-gray-100 ">
       <div className="flex items-center flex-col">
         <img className="" src={figure2} alt="figure2" />
-        <img className="-mt-20 w-72" src={person} alt="person2" />
+        <img className="-mt-20 w-80" src={person} alt="person2" />
       </div>
 
       {succesMessage && (

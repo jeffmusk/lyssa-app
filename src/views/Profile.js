@@ -39,7 +39,7 @@ export default function Profile() {
 
   return (
     <div className="flex flex-col h-screen items-center bg-gray-100 ">
-      <img src={profile} alt="profile" className="-mt-56 " />
+      <img src={profile} alt="profile" className="-mt-1 " />
       <div className="avatar ml-5 -mt-28 self-start flex ">
         <img
           src={currentUser.photoURL ? currentUser.photoURL : avatar}

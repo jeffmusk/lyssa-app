@@ -9,7 +9,6 @@ import "./NavBar.css";
 
 export default function NavBarFooter() {
   const location = useLocation();
-  console.log(location.pathname);
 
   return (
     <div className="bg-white w-full h-12 fixed bottom-0 navBarFooterShadow">
