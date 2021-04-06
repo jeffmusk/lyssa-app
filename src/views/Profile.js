@@ -4,7 +4,7 @@ import { FiCamera } from "react-icons/fi";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { useCurrentUser } from "../context/AuthContext";
 import { updateDisplayName } from "../firebase/Auth";
-import ButtonPrimary from "../components/Buttons/ButtonPrimary";
+import ButtonPrimary from "../components/buttons/ButtonPrimary";
 import ModalUpdatePassword from "../components/ModalUpdatePassword/ModalUpdatePassword";
 
 const profile = process.env.PUBLIC_URL + "/assets/profile.png";

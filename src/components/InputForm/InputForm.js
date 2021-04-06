@@ -10,7 +10,7 @@ export default function InputForm(props) {
         type="text"
         autoFocus="false"
         className={`${
-          formState[name] != "" && "filled"
+          formState[name] !== "" && "filled"
         }  input  border-gray-200 appearance-none rounded-lg w-full px-3 py-3 border-2
         pt-5 pb-2 focus focus:border-green-600 focus:outline-none active:outline-none active:border-green-600
           ${errorMessage ? "border-red-300" : "border-gray-400"}

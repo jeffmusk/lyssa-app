@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import InputForm from "../components/InputForm/InputForm";
 import InputPassword from "../components/InputForm/InputPassword";
 
-import ButtonPrimary from "../components/Buttons/ButtonPrimary";
-import ButtonSecondary from "../components/Buttons/ButtonSecondary";
+import ButtonPrimary from "../components/buttons/ButtonPrimary";
+import ButtonSecondary from "../components/buttons/ButtonSecondary";
 
 import { singInWithEmail, singInWithGoogle } from "../firebase/Auth";
 import { validateEmail, validatePassword, isEmpty } from "../utils/validations";

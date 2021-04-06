@@ -12,7 +12,7 @@ export default function NavBarFooter() {
 
   return (
     <div className="bg-white w-full h-12 fixed bottom-0 navBarFooterShadow">
-      {location.pathname != "/profile" && <AddElement />}
+      {location.pathname !== "/profile" && <AddElement />}
       <div className="w-full h-full  flex  justify-around items-center">
         <div className="w-10 h-10  flex justify-center items-center text-gray-500">
           <NavLink activeClassName="text-teal" to="/home">

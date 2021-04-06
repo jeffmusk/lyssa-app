@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import InputForm from "../components/InputForm/InputForm";
-import ButtonPrimary from "../components/Buttons/ButtonPrimary";
+import ButtonPrimary from "../components/buttons/ButtonPrimary";
 import { resetPassword } from "../firebase/Auth";
 import { validateEmail, isEmpty } from "../utils/validations";
 import { errorCodes } from "../firebase/ErrorCode";

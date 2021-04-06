@@ -7,6 +7,8 @@ import Home from "./views/Home";
 import Profile from "./views/Profile";
 import Lists from "./views/Lists";
 import Bills from "./views/Bills";
+
+import NewTask from "./views/create/NewTask";
 import ResetPassword from "./views/ResetPassword";
 import { PrivateRoute } from "./hoc/PrivateRoute";
 import { PublicRoute } from "./hoc/PublicRoute";
@@ -32,6 +34,7 @@ export default function Root() {
           </Route>
 
           <PrivateRoute exact path="/home" component={Home} />
+          <PrivateRoute exact path="/newtask" component={NewTask} />
           <PrivateRoute exact path="/lists" component={Lists} />
           <PrivateRoute exact path="/bills" component={Bills} />
           <PrivateRoute exact path="/profile" component={Profile} />

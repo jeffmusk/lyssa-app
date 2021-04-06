@@ -1,61 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { singOut } from "../firebase/Auth";
-import data from "../utils/data.json";
+import React /*,  { useEffect, useState }  */ from "react";
+import { FiSun } from "react-icons/fi";
+
+const eart = process.env.PUBLIC_URL + "/assets/eart.png";
 
 export default function Home() {
-  const [inputText, setInputText] = useState("");
-  const [task, setTask] = useState(data.task);
-
-  useEffect(() => {
-    setTask(data.task);
-  }, []);
-
-  const filerTask = () => {
-    let busqueda = task.filter((item) => {
-      if (item.title.includes(inputText)) {
-        console.log("filtrando");
-        console.log(item);
-        return item;
-      }
-    });
-
-    if (inputText.length === 0) {
-      setTask(data.task);
-    } else {
-      setTask(busqueda);
-    }
-  };
-
-  const onChange = async (e) => {
-    e.persist();
-    let value = e.target.value;
-    console.log(value);
-    await setInputText(value);
-
-    filerTask(value);
-  };
   return (
     <div>
-      <div className="flex justify-center py-5"></div>
-      <div className="flex gap-2 justify-center py-5  bg-gray-100 ">
-        <h1>Buscador</h1>
-        <input
-          type="text"
-          className="rounded-md p-2"
-          onChange={onChange}
-          value={inputText}
-        />
+      <div className="bg-white">
+        <img src={eart} alt="Background" />
       </div>
-      <ul className="">
-        {task.map((item, index) => (
-          <li
-            key={index}
-            className={"w-full px-4 py-3 my-3 bg-gray-100 shadow-md"}
-          >
-            {item.title + " " + item.description + " " + item.time}
-          </li>
-        ))}
-      </ul>
+      <div className="-mt-48 text-white flex flex-row justify-between items-end ">
+        <div className="flex mt-10 ">
+          <div className="flex flex-col ml-4">
+            <h1 className="text-5xl border-b-4 w-10  border-b-white ">5</h1>
+            <h3 className="text-lg">Actividades para hoy</h3>
+            <div className="flex  items-center">
+              <span>
+                <FiSun className="text-4xl mr-2 mt-2" />
+              </span>
+              <h1 className="text-5xl">Hoy</h1>
+            </div>
+          </div>
+        </div>
+
+        <div className="justify-self-end mr-4">
+          <h1 className="text-5xl">58%</h1>
+        </div>
+      </div>
     </div>
   );
 }

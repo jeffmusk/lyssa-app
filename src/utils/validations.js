@@ -4,7 +4,7 @@ export function validateEmail(email) {
 }
 
 export function isEmpty(input) {
-  if (input == "" || input.length === 0) {
+  if (input === "" || input.length === 0) {
     return true;
   } else {
     return false;
