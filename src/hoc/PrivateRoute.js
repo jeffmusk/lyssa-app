@@ -1,7 +1,8 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { useCurrentUser } from "../context/AuthContext";
-import NavBarMobile from "../components/NavBarMobile/NavBarMobile";
+import HamburgerNav from "../components/NavBarMobile/HamburgerNav";
+import NavBarFooter from "../components/NavBarMobile/NavBarFooter";
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
   const { currentUser, fetchCurrentUser } = useCurrentUser();
@@ -11,15 +12,16 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
       {...rest}
       render={(props) =>
         currentUser ? (
-          <div>
-            <NavBarMobile currentUser={currentUser} />
+          <React.Fragment>
+            <HamburgerNav currentUser={currentUser} />
 
             <Component
               {...props}
               user={useCurrentUser}
               fecth={fetchCurrentUser}
             />
-          </div>
+            <NavBarFooter />
+          </React.Fragment>
         ) : (
           <Redirect
             to={{

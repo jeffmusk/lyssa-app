@@ -32,10 +32,13 @@ export default function Profile() {
     setFormState(() => ({ ...formState, [name]: value }));
   };
 
-  const updateNameUser = () => updateDisplayName(formState.displayName);
+  const updateNameUser = () => {
+    updateDisplayName(formState.displayName);
+    setIsEdit(false);
+  };
 
   return (
-    <div className="flex flex-col h-screen items-center bg-gray-100 max-w-sm">
+    <div className="flex flex-col h-screen items-center bg-gray-100 ">
       <img src={profile} alt="profile" className="-mt-56 " />
       <div className="avatar ml-5 -mt-28 self-start flex ">
         <img
@@ -98,7 +101,7 @@ export default function Profile() {
         </span>
       </div>
       <div className="w-full mt-10 flex justify-center">
-        <ButtonPrimary text="actualizar" onClick={updateNameUser} />
+        {isEdit && <ButtonPrimary text="Actualizar" onClick={updateNameUser} />}
       </div>
       {updatePassword && (
         <ModalUpdatePassword setUpdatePassword={setUpdatePassword} />

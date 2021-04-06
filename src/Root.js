@@ -5,6 +5,8 @@ import Login from "./views/Login";
 import SingUp from "./views/SingUp";
 import Home from "./views/Home";
 import Profile from "./views/Profile";
+import Lists from "./views/Lists";
+import Bills from "./views/Bills";
 import ResetPassword from "./views/ResetPassword";
 import { PrivateRoute } from "./hoc/PrivateRoute";
 import { PublicRoute } from "./hoc/PublicRoute";
@@ -12,7 +14,7 @@ import { PublicRoute } from "./hoc/PublicRoute";
 export default function Root() {
   return (
     <Router>
-      <div className="max-w-sm">
+      <div className="max-w-md">
         {/* A <Switch> looks through its children <Route>s and
         renders the first one that matches the current URL. */}
         <Switch>
@@ -30,6 +32,8 @@ export default function Root() {
           </Route>
 
           <PrivateRoute exact path="/home" component={Home} />
+          <PrivateRoute exact path="/lists" component={Lists} />
+          <PrivateRoute exact path="/bills" component={Bills} />
           <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
       </div>

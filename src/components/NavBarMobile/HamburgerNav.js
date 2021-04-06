@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { singOut } from "../../firebase/Auth";
+import "./NavBar.css";
 
-export default function NavBarMobile(props) {
+export default function HamburgerNav(props) {
   const [isVisible, setIsVisible] = useState(false);
   const { currentUser } = props;
 
@@ -20,13 +21,13 @@ export default function NavBarMobile(props) {
       </div>
 
       {isVisible && (
-        <div className="w-2/3  bg-gray-300  shadow h-screen absolute right-0 ">
+        <div className="w-2/3  bg-gray-100 hamburguerNavShadow  shadow h-screen absolute right-0 ">
           <HiMenuAlt3
             className="cursor-pointer absolute right-4 text-gray-400 top-4 text-2xl"
             onClick={onChange}
           />
           <h1
-            className="text-gray-600 font-semibold underline text-lg absolute top-14 right-5 opacity-100"
+            className="text-gray-600 font-semibold underline text-lg absolute top-14 right-5 opacity-100 "
             onClick={() => singOut()}
           >
             Cerrar sesión
