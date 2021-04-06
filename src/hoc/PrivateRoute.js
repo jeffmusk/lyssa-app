@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-
 import { useCurrentUser } from "../context/AuthContext";
+import NavBarMobile from "../components/NavBarMobile/NavBarMobile";
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
   const { currentUser, fetchCurrentUser } = useCurrentUser();
@@ -11,11 +11,15 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
       {...rest}
       render={(props) =>
         currentUser ? (
-          <Component
-            {...props}
-            user={useCurrentUser}
-            fecth={fetchCurrentUser}
-          />
+          <div>
+            <NavBarMobile currentUser={currentUser} />
+
+            <Component
+              {...props}
+              user={useCurrentUser}
+              fecth={fetchCurrentUser}
+            />
+          </div>
         ) : (
           <Redirect
             to={{

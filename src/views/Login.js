@@ -119,7 +119,7 @@ export default function Login() {
     <div className="max-w-sm">
       <div className="imageHeader relative">
         <div className="figure1 -m-2 relative">
-          <img src={figure1} alt="image" />
+          <img src={figure1} alt="figure " />
           <h1 className="absolute  top-5 left-4 z-0 font-bold text-white text-3xl ">
             Organiza tu <br /> día con <br /> Lyssa
           </h1>

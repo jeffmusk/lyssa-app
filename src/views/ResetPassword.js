@@ -10,6 +10,8 @@ import { errorCodes } from "../firebase/ErrorCode";
 const figure2 = process.env.PUBLIC_URL + "/assets/figure3.png";
 const person = process.env.PUBLIC_URL + "/assets/person2.png";
 
+/* TODO update to react icons */
+
 function checkIcon(props) {
   return (
     <svg
@@ -70,7 +72,7 @@ export default function ResetPassword() {
   };
 
   return (
-    <div className="flex flex-col h-screen items-center bg-gray-100 max-w-sm">
+    <div className="flex flex-col h-screen items-center bg-gray-100 ">
       <div className="flex items-center flex-col">
         <img className="" src={figure2} alt="figure2" />
         <img className="-mt-20 w-72" src={person} alt="person2" />

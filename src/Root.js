@@ -12,7 +12,7 @@ import { PublicRoute } from "./hoc/PublicRoute";
 export default function Root() {
   return (
     <Router>
-      <div>
+      <div className="max-w-sm">
         {/* A <Switch> looks through its children <Route>s and
         renders the first one that matches the current URL. */}
         <Switch>

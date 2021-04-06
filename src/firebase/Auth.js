@@ -75,3 +75,34 @@ export const resetPassword = async (email) => {
     return e;
   }
 };
+
+export const updateDisplayName = (displayName) => {
+  let user = auth.currentUser;
+
+  user
+    .updateProfile({
+      displayName: displayName,
+    })
+    .then((res) => {
+      alert("El usuario fue actualizado");
+      console.log(res);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+};
+
+export const updatePassword = (password) => {
+  let user = auth.currentUser;
+  user
+    .updatePassword(password)
+    .then((res) => {
+      alert("Contraseña actualizada");
+      return res;
+    })
+    .catch((error) => {
+      alert("Por favor vuelva a ingresar para cambiar la contraseña");
+      singOut();
+      return error;
+    });
+};

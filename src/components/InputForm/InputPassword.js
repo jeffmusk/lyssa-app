@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./InputForm.css";
 
+/* TODO update to react icons */
 function EyeOffIcon(props) {
   return (
     <svg
