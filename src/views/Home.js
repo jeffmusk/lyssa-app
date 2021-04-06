@@ -36,14 +36,7 @@ export default function Home() {
   };
   return (
     <div>
-      <div className="flex justify-center py-5">
-        <button
-          className="rounded bg-red-500 text-white font-semibold px-8 py-3 shadow-md"
-          onClick={singOut}
-        >
-          Cerrar sesión
-        </button>
-      </div>
+      <div className="flex justify-center py-5"></div>
       <div className="flex gap-2 justify-center py-5  bg-gray-100 ">
         <h1>Buscador</h1>
         <input
